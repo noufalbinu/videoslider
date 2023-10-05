@@ -1,0 +1,74 @@
+/********* SLIDER DIV **********/
+.slider {
+    position: relative;
+	height:100vh;
+    width: 100%;
+}
+
+/********* SLIDER DIV END **********/
+
+.cover-background {
+
+    overflow: auto;
+}
+
+/********* video_container DIV **********/
+
+.video_container {
+	z-index: 4;
+    position: absolute;
+    transition: all 3s;
+	transform: translateY(0vh); 
+    top: 0;
+	width:100%;
+    height: 100%;
+    opacity: 0.9;
+	overflow:hidden;
+    display: none;
+
+}
+.current_video {
+    position: absolute;
+    z-index: 5;
+    color: #fff;
+    width: 100%;
+    transform: translateY(10vh);
+    top:500px;
+    height: 500px;
+	opacity: 0.9;
+    display: block;
+ 
+}
+
+.play_button {
+    position: absolute;
+    z-index: 9;
+    bottom:0;
+    right:0;
+}
+
+.current_text {
+    position: absolute;
+    z-index: 2;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    top: 100%;
+}
+/********* video_container DIV END **********/
+
+.slide-text-container {
+    display: none;
+}
+
+
+
+
+
+
+
