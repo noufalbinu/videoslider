@@ -1,12 +1,12 @@
-
-
 /*********************************
  
-SLIDER  https://codepen.io/Dimboss/pen/mYGaqo : for reference dont use complete code
+SLIDER  https://codepen.io/Dimboss/pen/mYGaqo : Inspired From
 
 *********************************/
 
-let slide=0, slides=document.querySelectorAll('.cover-background > .video_container');
+//status pointer selector
+  
+let slide=0, slides = document.querySelectorAll('.cover-background > .video_container');
 
 let auto;
 function startSl(){
@@ -21,6 +21,13 @@ function nextSl(){
   slide=(slide+1)%slides.length;
   slides[slide].classList.add("current_video")
   playCheckup(); // Call checkup function when current_video class is added
+
+  var dataContainer = document.querySelector('.point');
+  var dataValue = parseInt(dataContainer.getAttribute('data-current'));
+  console.log(dataValue);
+
+  let pointer = document.querySelector('.cover-background .current_video[data-key="' + slide + '"]');
+
 }
 startSl();
 document.querySelectorAll("button").forEach((b,i)=>b.onclick=[startSl,stopSl][i]);
@@ -31,16 +38,15 @@ Function for Player Controls.
 Added Play & Pause Button.
   
 **********************************/
-function playCheckup(){
+function playCheckup() {
+
   video = document.querySelector(".current_video > .video");
-  console.log(video)
   video.autoplay = true;
   video.load();
 
   /*********************************
    * Play Pause Button fix: https://stackoverflow.com/questions/36803176/how-to-prevent-the-play-request-was-interrupted-by-a-call-to-pause-error
-  
-  *******************************/
+  **********************************/
 
   // Initializing values
   var isPlaying = true;
@@ -73,11 +79,11 @@ function playCheckup(){
       // Play the video
       playVid();
       // Update the button text to 'Pause'
-      playButton.innerHTML = "<img src='img/play_button.svg'>";
+      playButton.innerHTML = "<img src='img/linkedin.png'>";
     } else if(playVid() == true) {
       // Pause the video
       pauseVid()
-      playButton.innerHTML = "<img src='img/play_button.svg'>";
+      playButton.innerHTML = "<img src='img/linkedin.png'>";
     }
   });
 };

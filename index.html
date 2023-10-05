@@ -8,29 +8,19 @@
     <link rel="stylesheet" href="css/slider.css">
     <!--- EXTERNAL JS FILES  --->
     <script src="js/jquery-3.7.1.min.js"></script>
-    
-    
 </head>
     <body>
-        
+        <span class="play_button" id="play_button" ><img src="img/play_button.svg" alt="Play Button"></span>
         <div class="slider" data-state="0"><!----slider--->
-            <div class="container ststxt">
+            <div class="status-pointer-container">
                 <div class="status">
-                    <div class="point" data-current="0"></div>
-                    <div class="stat" data-key="0"></div>
-                    <div class="stat" data-key="1"></div>
-                    <div class="stat" data-key="2"></div>
-                    <div class="stat" data-key="3"></div>
-                    <div class="stat" data-key="4"></div>
-                    <div class="stat" data-key="5"></div>
-                </div>
-                <div class="text">
-                    <div class="current_text" data-key="0"><h2>title text 0</h2><p>Hello This is a sample text 0</p></div>
-                    <div class="slide-text-container" data-key="1"><h2>title text 1</h2><p>Hello This is a sample text 1</p></div>
-                    <div class="slide-text-container" data-key="2"><h2>title text 2</h2><p>Hello This is a sample text 2</p></div>
-                    <div class="slide-text-container" data-key="3"><h2>title text 3</h2><p>Hello This is a sample text 3</p></div>
-                    <div class="slide-text-container" data-key="4"><h2>title text 4</h2><p>Hello This is a sample text 4</p></div>
-                    <div class="slide-text-container" data-key="5"><h2>title text 5</h2><p>Hello This is a sample text 5</p></div>
+                   <div class="point" data-current="0"></div>
+                   <div class="stat" data-key="0"></div>
+                   <div class="stat" data-key="1"></div>
+                   <div class="stat" data-key="2"></div>
+                   <div class="stat" data-key="3"></div>
+                   <div class="stat" data-key="4"></div>
+                   <div class="stat" data-key="5"></div>
                 </div>
             </div>
             <div class="cover-background">
@@ -40,22 +30,22 @@
                         Your browser does not support the video tag.
                     </video>
                 </div>
-                <div id="second" class="video_container" data-key="0">
+                <div id="second" class="video_container" data-key="1">
                     <video class="video"  width="100%" height="auto" autoplay loop muted>
                         <source src="videos/video_2.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div> 
-                <div id="third" class="video_container" data-key="0">
+                <div id="third" class="video_container" data-key="2">
                     <video class="video"  width="100%" height="auto" autoplay loop muted>
                         <source src="videos/video_3.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>  
             </div>
-            <span class="play_button" id="play_button" ><img src="img/play_button.svg" alt="Play Button"></span>
+            
         </div><!---- slider-end ---->
-
+        
         <div class="progressbar">
             <div class="full">
                 <div class="progress"></div>

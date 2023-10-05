@@ -3,48 +3,50 @@
     position: relative;
 	height:100vh;
     width: 100%;
+	top:0;
+	overflow:hidden;
 }
 
 /********* SLIDER DIV END **********/
 
 .cover-background {
 
-    overflow: auto;
+    overflow:hidden;
 }
 
 /********* video_container DIV **********/
 
 .video_container {
-	z-index: 4;
-    position: absolute;
-    transition: all 3s;
-	transform: translateY(0vh); 
-    top: 0;
+	z-index: 2;
+	position: realative;
+	transition: all 3s;
+	transform: translateY(500px);
+	top: -500;
 	width:100%;
-    height: 100%;
-    opacity: 0.9;
-	overflow:hidden;
-    display: none;
-
+	height: -500px;
+	opacity: 0.9;
 }
 .current_video {
     position: absolute;
     z-index: 5;
     color: #fff;
     width: 100%;
-    transform: translateY(10vh);
-    top:500px;
+    transform: translateY(0px);
+    top:0px;
     height: 500px;
 	opacity: 0.9;
-    display: block;
+    display: block !important;
+	
  
 }
 
 .play_button {
     position: absolute;
     z-index: 9;
-    bottom:0;
+    top: 45px;
     right:0;
+    height: 50px;
+    width: 50px;
 }
 
 .current_text {
@@ -67,6 +69,83 @@
 }
 
 
+/********* Status Pointer **********/
+.status:before {
+    content:"";
+    width:10px;
+    height: 237px;
+    background:000;
+    border-left: 2px solid #ffffff85;
+    position:relative;
+    left: 1.91em;
+    bottom: -280px;
+ }
+ .status-pointer-container .status {
+     position: absolute;
+     left: -9px;
+     display: flex;
+     bottom: 25%;
+     z-index: 47;
+     flex-direction: column;
+     justify-content: center;
+     align-content: flex-start;
+     align-items: flex-start;
+ }
+.slider .status .point {
+    width: 18px;
+    height: 18px;
+    top: 33px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 15;
+    transition: left 500ms ease-in-out;
+    left: 16px;
+}
+.exp{visibility: hidden;}
+.slider .status .point {
+   bottom: 6px;
+}
+.slider .status .point:before {
+   width: 448px;
+   position: absolute;
+   color: #fff;
+   left: 33px;
+   font-size: 15px;
+   top: -3px;
+   font-family: 'Montserrat', sans-serif !important;
+   text-transform: uppercase;
+}
+.slider .status .point[data-current='0'] {
+    top: 35px;
+}
+.slider .status .point[data-current='1'] {
+    top: 80px;
+}
+.slider .status .point[data-current='2'] {
+    top: 126px;
+}
+.slider .status .point[data-current='3'] {
+    top: 174px;
+}
+.slider .status .point[data-current='4'] {
+    top: 221px;
+}
+.slider .status .point[data-current='5'] {
+    top: 272px;
+}
+.slider .status .stat {
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 20;
+    margin: 20px 21px;
+    border: none;
+}
+
+.slider .status .stat.current {
+    background-color: #fff;
+}
 
 
 
