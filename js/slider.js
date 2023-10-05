@@ -8,48 +8,76 @@ let slide=0, slides=document.querySelectorAll('.cover-background > .video_contai
 let auto;
 function startSl(){
  stopSl();
- auto=setInterval(nextSl, 10000);
+ auto=setInterval(nextSl, 5000);
 }
 function stopSl(){
  clearInterval(auto);
 }
 function nextSl(){
-  slides[slide].classList.remove("current_video");
+  slides[slide].classList.remove("current_video")
   slide=(slide+1)%slides.length;
-  slides[slide].classList.add("current_video");
+  slides[slide].classList.add("current_video")
+  playCheckup(); // Call checkup function when current_video class is added
 }
 startSl();
 document.querySelectorAll("button").forEach((b,i)=>b.onclick=[startSl,stopSl][i]);
 
 /*********************************
 
-Player Controls.
+Function for Player Controls.
 Added Play & Pause Button.
   
 **********************************/
-function checkup(){
-  let video = document.querySelector(".current_video > .video");
-};
-let video = checkup();
-console.log(video);
+function playCheckup(){
+  video = document.querySelector(".current_video > .video");
+  console.log(video)
+  video.autoplay = true;
+  video.load();
 
+  /*********************************
+   * Play Pause Button fix: https://stackoverflow.com/questions/36803176/how-to-prevent-the-play-request-was-interrupted-by-a-call-to-pause-error
+  
+  *******************************/
 
-
-//Play Button
-var playButton = document.getElementById("play_button");
-
-// Event listener for the play/pause button
-playButton.addEventListener("click", function() {
-  if (video.paused == true) {
-    // Play the video
-    video.play();
-    // Update the button text to 'Pause'
-    playButton.innerHTML = "<img src='img/play_button.svg'>";
-    
-  } else {
-    // Pause the video
-    video.pause();
-    playButton.innerHTML = "<img src='img/play_button.svg'>";
+  // Initializing values
+  var isPlaying = true;
+  // On video playing toggle values
+  video.onplaying = function() {
+      isPlaying = true;
+  };
+  // On video pause toggle values
+  video.onpause = function() {
+      isPlaying = false;
+  };
+  // Play video function
+  async function playVid() {      
+      if (video.paused && !isPlaying) {
+          return video.play();
+      }
+  } 
+  // Pause video function
+  function pauseVid() {     
+      if (!video.paused && isPlaying) {
+          video.pause();
+      }
   }
-});
+
+  //Play Button
+  var playButton = document.getElementById("play_button");
+  // Event listener for the play/pause button
+  playButton.addEventListener("click", function() {
+    if(pauseVid() == true) {
+      // Play the video
+      playVid();
+      // Update the button text to 'Pause'
+      playButton.innerHTML = "<img src='img/play_button.svg'>";
+    } else {
+      // Pause the video
+      pauseVid()
+      playButton.innerHTML = "<img src='img/play_button.svg'>";
+    }
+  });
+};
+playCheckup();
+
 
