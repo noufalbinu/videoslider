@@ -1,8 +1,11 @@
 
 
 /*********************************
+ 
 SLIDER  https://codepen.io/Dimboss/pen/mYGaqo : for reference dont use complete code
+
 *********************************/
+
 let slide=0, slides=document.querySelectorAll('.cover-background > .video_container');
 
 let auto;
@@ -71,7 +74,7 @@ function playCheckup(){
       playVid();
       // Update the button text to 'Pause'
       playButton.innerHTML = "<img src='img/play_button.svg'>";
-    } else {
+    } else if(playVid() == true) {
       // Pause the video
       pauseVid()
       playButton.innerHTML = "<img src='img/play_button.svg'>";
