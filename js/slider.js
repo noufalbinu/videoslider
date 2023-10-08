@@ -22,12 +22,10 @@ function nextSl(){
   slides[slide].classList.add("current_video")
   playCheckup(); // Call checkup function when current_video class is added
 
-  var dataContainer = document.querySelector('.point');
-  var dataValue = parseInt(dataContainer.getAttribute('data-current'));
-  console.log(dataValue);
-
-  let pointer = document.querySelector('.cover-background .current_video[data-key="' + slide + '"]');
-
+  let pointer = document.querySelector(".point");
+  pointer.dataset.current = slide; //change pointer data attribute value with slide
+  
+  
 }
 startSl();
 document.querySelectorAll("button").forEach((b,i)=>b.onclick=[startSl,stopSl][i]);
