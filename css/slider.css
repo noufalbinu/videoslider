@@ -19,7 +19,7 @@
 .video_container {
 	z-index: 2;
 	position: realative;
-	transition: all 3s;
+	transition: all 0.5s;
 	transform: translateY(500px);
 	top: -500;
 	width:100%;

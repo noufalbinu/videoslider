@@ -21,14 +21,35 @@ function nextSl(){
   slide=(slide+1)%slides.length;
   slides[slide].classList.add("current_video")
   playCheckup(); // Call checkup function when current_video class is added
-
+  
   let pointer = document.querySelector(".point");
   pointer.dataset.current = slide; //change pointer data attribute value with slide
-  
+
+
+  //on mouse click change pointer
+  const elStatus = Array.from(document.querySelectorAll('.status .stat'));
+  elStatus.forEach(stat => {
+        stat.addEventListener('click', () => {
+          let vlg = stat.dataset.key;
+          if(vlg == slide) {
+            console.log('same');
+          } else {
+              slides[slide].classList.remove("current_video");
+              slide=(slide+vlg)%slides.length;
+              slides[slide].classList.add("current_video");
+              pointer.dataset.current = slide; //change pointer data attribute value with slide
+              console.log(vlg, slide);
+            }
+        });
+  });
   
 }
 startSl();
-document.querySelectorAll("button").forEach((b,i)=>b.onclick=[startSl,stopSl][i]);
+document.querySelector(".play_button").forEach((b,i)=>b.onclick=[startSl,stopSl][i]);
+
+
+
+
 
 /*********************************
 
