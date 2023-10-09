@@ -11,7 +11,7 @@ let slide=0, slides = document.querySelectorAll('.cover-background > .video_cont
 let auto;
 function startSl(){
  stopSl();
- auto=setInterval(nextSl, 5000);
+ auto=setInterval(nextSl, 1000);
 }
 function stopSl(){
  clearInterval(auto);
@@ -25,29 +25,23 @@ function nextSl(){
   let pointer = document.querySelector(".point");
   pointer.dataset.current = slide; //change pointer data attribute value with slide
 
-
   //on mouse click change pointer
   const elStatus = Array.from(document.querySelectorAll('.status .stat'));
   elStatus.forEach(stat => {
-        stat.addEventListener('click', () => {
-          let vlg = stat.dataset.key;
-          if(vlg == slide) {
-            console.log('same');
-          } else {
-              slides[slide].classList.remove("current_video");
-              slide=(slide+vlg)%slides.length;
-              slides[slide].classList.add("current_video");
-              pointer.dataset.current = slide; //change pointer data attribute value with slide
-              console.log(vlg, slide);
-            }
-        });
+    stat.addEventListener('click', () => {
+      let vlg = stat.dataset.key;
+      if(vlg == slide) {
+        console.log('same');
+      } else {
+        slides[slide].classList.remove("current_video");
+        slide=(slide+vlg)%slides.length;
+        slides[slide].classList.add("current_video");
+        pointer.dataset.current = slide; //change pointer data attribute value with slide
+      }
+    });
   });
-  
 }
 startSl();
-document.querySelector(".play_button").forEach((b,i)=>b.onclick=[startSl,stopSl][i]);
-
-
 
 
 
@@ -55,10 +49,13 @@ document.querySelector(".play_button").forEach((b,i)=>b.onclick=[startSl,stopSl]
 
 Function for Player Controls.
 Added Play & Pause Button.
+&
+Slider controls
   
 **********************************/
-function playCheckup() {
 
+
+function playCheckup() {
   video = document.querySelector(".current_video > .video");
   video.autoplay = true;
   video.load();
@@ -90,6 +87,25 @@ function playCheckup() {
       }
   }
 
+  //Stop & Start Slide
+
+  let stopbutton = function slideBreaker() { 
+    stopbutton.classList.replace("button" , "start-state");
+  }
+  console.log(stopbutton);
+  stopbutton.addEventListener("click", function() {
+    let slideStop;
+    slideStop = slideBreaker(stopSl);
+    slideNum = 'button';
+    if(stopbutton == 'button') {
+      stopSl();
+    } else {
+      startSl();
+    }
+  });
+
+  
+
   //Play Button
   var playButton = document.getElementById("play_button");
   // Event listener for the play/pause button
@@ -101,11 +117,10 @@ function playCheckup() {
       playButton.innerHTML = "<img src='img/linkedin.png'>";
     } else if(playVid() == true) {
       // Pause the video
-      pauseVid()
+      pauseVid();
       playButton.innerHTML = "<img src='img/linkedin.png'>";
     }
   });
 };
+
 playCheckup();
-
-
