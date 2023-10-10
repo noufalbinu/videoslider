@@ -87,25 +87,6 @@ function playCheckup() {
       }
   }
 
-  //Stop & Start Slide
-
-  let stopbutton = function slideBreaker() { 
-    stopbutton.classList.replace("button" , "start-state");
-  }
-  console.log(stopbutton);
-  stopbutton.addEventListener("click", function() {
-    let slideStop;
-    slideStop = slideBreaker(stopSl);
-    slideNum = 'button';
-    if(stopbutton == 'button') {
-      stopSl();
-    } else {
-      startSl();
-    }
-  });
-
-  
-
   //Play Button
   var playButton = document.getElementById("play_button");
   // Event listener for the play/pause button
@@ -122,5 +103,15 @@ function playCheckup() {
     }
   });
 };
-
 playCheckup();
+``
+//Stop & Start 
+document.querySelector(".button").addEventListener(
+  "click",
+  ({ currentTarget: btn }) => {
+    const toggle = (value) => value === "stop" ? "start" : "stop";
+    btn.textContent = toggle(btn.textContent);
+    btn.dataset.slideStop = toggle(btn.dataset.slideStop);
+    btn.dataset.slideStop
+  },
+);
