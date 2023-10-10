@@ -106,12 +106,19 @@ function playCheckup() {
 playCheckup();
 ``
 //Stop & Start 
-document.querySelector(".button").addEventListener(
-  "click",
-  ({ currentTarget: btn }) => {
-    const toggle = (value) => value === "stop" ? "start" : "stop";
-    btn.textContent = toggle(btn.textContent);
-    btn.dataset.slideStop = toggle(btn.dataset.slideStop);
-    btn.dataset.slideStop
-  },
-);
+let stopbutton = document.querySelector(".button");
+let stoper;
+stopbutton.addEventListener("click", function () {
+  stoper = stopbutton.dataset.slideStop;
+  stopbutton.dataset.slideStop = stoper === 'stop' ? 'start' : 'stop';
+  switch (stoper) {
+  case 'start': {
+    console.log('start'); 
+    stopSl();
+  } break;
+  case 'stop': {   
+    console.log('stop'); /* */
+    startSl();
+  } break;
+}
+});
