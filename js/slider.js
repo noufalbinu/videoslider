@@ -104,9 +104,9 @@ function playCheckup() {
   });
 };
 playCheckup();
-``
-//Stop & Start 
-let stopbutton = document.querySelector(".button");
+
+//Start & Stop 
+let stopbutton = document.querySelector(".play_button");
 let stoper;
 stopbutton.addEventListener("click", function () {
   stoper = stopbutton.dataset.slideStop;

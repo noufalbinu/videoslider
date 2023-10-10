@@ -1,3 +1,8 @@
+/********* CLEAR FIX **********/
+body {
+    margin: 0;
+    padding: 0;
+}
 /********* SLIDER DIV **********/
 .slider {
     position: relative;
@@ -33,7 +38,7 @@
     width: 100%;
     transform: translateY(0px);
     top:0px;
-    height: 500px;
+    height: 100vh;
 	opacity: 0.9;
     display: block !important;
 	
