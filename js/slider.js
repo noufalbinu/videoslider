@@ -13,7 +13,7 @@ textslide = document.querySelectorAll('.text > .slide_text');
 let auto;
 function startSl(){
  stopSl();
- auto=setInterval(nextSl, 10000);
+ auto=setInterval(nextSl, 5000);
 }
 function stopSl(){
  clearInterval(auto);
@@ -50,8 +50,6 @@ function nextSl(){
   
 }
 startSl();
-
-
 /*********************************
 
 Function for Player Controls.
@@ -60,8 +58,6 @@ Added Play & Pause Button.
 Slider controls
   
 **********************************/
-
-
 function playCheckup() {
   video = document.querySelector(".current_video > .video");
   video.autoplay = true;
@@ -95,7 +91,6 @@ function playCheckup() {
           video.pause();
       }
   }
-
   //Play Button
   var playButton = document.getElementById("play_button");
   // Event listener for the play/pause button
@@ -113,7 +108,6 @@ function playCheckup() {
   });
 };
 playCheckup();
-
 //Start & Stop 
 let stopbutton = document.querySelector(".play_button");
 let stoper;

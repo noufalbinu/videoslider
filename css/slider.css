@@ -165,12 +165,33 @@ body {
     text-shadow: 0 0 5px #000 3;
     z-index: 555;
     transform-origin: right top;
+    transform: translateY(0px);
+    top:0px;
     font-size: 15vw;
     text-transform: uppercase;
     position: absolute;
     width: 100vh;
     visibility: hidden;
 }
+.slide-extras .text .current_text{
+    opacity: 0.8;
+    transform: translateY(80vh) scaleX(1);
+	bottom: -500;
+    color: #fff;
+    animation: taadaa 1s;
+    visibility: visible;
+}
+@keyframes taadaa { 
+    0% {
+      opacity: 0;
+      transform: translateY(0px) scaleY(0);
+    }
+    100% {
+      opacity: 1;
+      
+      transform: translateY(80vh) scaleY(1);
+    }
+  }
 .slide-extras .text div {
    position:absolute;
 }
@@ -179,15 +200,9 @@ body {
         font-size: 10em;
     }
 }
-
 .slide-extras .text div {left: 10%;font-size: 43px;bottom: 10%;color: #fff;}
 .text div p {
     font-size: 18px;
-}
-.slide-extras .text .current_text{
-    visibility: visible;
-    opacity: 0.8;
-    transform: translateY(0vh) scaleX(1);
 }
 
 
