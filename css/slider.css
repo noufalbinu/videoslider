@@ -2,6 +2,7 @@
 body {
     margin: 0;
     padding: 0;
+    position: relative;
 }
 /********* SLIDER DIV **********/
 .slider {
@@ -13,9 +14,7 @@ body {
 }
 
 /********* SLIDER DIV END **********/
-
 .cover-background {
-
     overflow:hidden;
 }
 
@@ -39,79 +38,76 @@ body {
     transform: translateY(0px);
     top:0px;
     height: 100vh;
-	opacity: 0.9;
+    opacity: unset !important;
     display: block !important;
-	
- 
 }
+/********* video_container DIV END **********/
 
+/********* SLide Extras **********/
+.slide-extras {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    z-index: 555;
+    height: 100vh;
+    width: 100%;
+}
 .play_button {
     position: absolute;
     z-index: 9;
-    top: 45px;
-    right:0;
+    bottom: 10%;
+    right: 10%;
     height: 50px;
     width: 50px;
 }
 
-.current_text {
+
+
+/********* Pointer **********/
+ .status-pointer-container {
     position: absolute;
-    z-index: 2;
-    color: #fff;
+    left: 5%;
+    bottom: 50%;
+    transform: translate(0, 50%);
+    width: 50px;
+ }
+.status {
+    position: relative;
     display: flex;
+    height: 100%;
+    bottom: 0;
+    flex-wrap: wrap;
     flex-direction: column;
-    flex-wrap: nowrap;
     align-content: center;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    top: 100%;
 }
-/********* video_container DIV END **********/
-
-.slide-text-container {
-    display: none;
-}
-
-
-/********* Status Pointer **********/
 .status:before {
+	position: absolute;
     content:"";
-    width:10px;
-    height: 237px;
-    background:000;
-    border-left: 2px solid #ffffff85;
-    position:relative;
-    left: 1.91em;
-    bottom: -280px;
+    width: 1px;
+    height: 100%;
+    background: #fff;
+    position: absolute;
+    display: block;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+    left: 50%;
  }
- .status-pointer-container .status {
-     position: absolute;
-     left: -9px;
-     display: flex;
-     bottom: 25%;
-     z-index: 47;
-     flex-direction: column;
-     justify-content: center;
-     align-content: flex-start;
-     align-items: flex-start;
- }
-.slider .status .point {
+
+.status .point {
+    position: absolute;
     width: 18px;
-    height: 18px;
-    top: 33px;
+	height: 18px;
     background-color: #ffffff;
     border-radius: 50%;
-    z-index: 15;
     transition: left 500ms ease-in-out;
     left: 16px;
-    position: relative;
+    z-index: 55555555555;
 }
 .exp{visibility: hidden;}
-.slider .status .point {
-   bottom: 6px;
-}
-.slider .status .point:before {
+
+.status .point:before {
    width: 448px;
    position: absolute;
    color: #fff;
@@ -121,36 +117,77 @@ body {
    font-family: 'Montserrat', sans-serif !important;
    text-transform: uppercase;
 }
-.slider .status .point[data-current='0'] {
-    top: 35px;
+.status .point[data-current='0'] {
+    top: 0px;
 }
-.slider .status .point[data-current='1'] {
-    top: 80px;
+.status .point[data-current='1'] {
+    top: 71px;
 }
-.slider .status .point[data-current='2'] {
-    top: 126px;
+.status .point[data-current='2'] {
+    top: 142px;
 }
-.slider .status .point[data-current='3'] {
-    top: 174px;
+.status .point[data-current='3'] {
+    top: 222px;
 }
-.slider .status .point[data-current='4'] {
-    top: 221px;
+.status .point[data-current='4'] {
+    top: 296px;
 }
-.slider .status .point[data-current='5'] {
-    top: 272px;
+.status .point[data-current='5'] {
+    top: 372px;
 }
-.slider .status .stat {
+
+/********* Stat **********/
+
+.stat {
     width: 8px;
     height: 8px;
     background-color: #fff;
     border-radius: 50%;
-    z-index: 20;
-    margin: 20px 21px;
+    margin: 34px 0px;
     border: none;
 }
+.stat[data-key='0'] {
+    margin-top: 0 !important;
+}
+.stat[data-key='5'] {
+    margin-bottom: 0 !important;
+}
 
-.slider .status .stat.current {
+.status .stat.current {
     background-color: #fff;
+}
+
+
+/********* Slider Text **********/
+
+.slide-extras .text .slide_text {
+    color: #000;
+    text-shadow: 0 0 5px #000 3;
+    z-index: 555;
+    transform-origin: right top;
+    font-size: 15vw;
+    text-transform: uppercase;
+    position: absolute;
+    width: 100vh;
+    visibility: hidden;
+}
+.slide-extras .text div {
+   position:absolute;
+}
+@media (min-width: 70em) {
+    .slide-extras .text {
+        font-size: 10em;
+    }
+}
+
+.slide-extras .text div {left: 10%;font-size: 43px;bottom: 10%;color: #fff;}
+.text div p {
+    font-size: 18px;
+}
+.slide-extras .text .current_text{
+    visibility: visible;
+    opacity: 0.8;
+    transform: translateY(0vh) scaleX(1);
 }
 
 

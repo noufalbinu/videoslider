@@ -6,20 +6,27 @@ SLIDER  https://codepen.io/Dimboss/pen/mYGaqo : Inspired From
 
 //status pointer selector
   
-let slide=0, slides = document.querySelectorAll('.cover-background > .video_container');
+let slide=0, 
+slides = document.querySelectorAll('.cover-background > .video_container');
+textslide = document.querySelectorAll('.text > .slide_text');
 
 let auto;
 function startSl(){
  stopSl();
- auto=setInterval(nextSl, 1000);
+ auto=setInterval(nextSl, 10000);
 }
 function stopSl(){
  clearInterval(auto);
 }
 function nextSl(){
-  slides[slide].classList.remove("current_video")
+  //video slide move next
+  slides[slide].classList.remove("current_video");
+  textslide[slide].classList.remove("current_text");
   slide=(slide+1)%slides.length;
-  slides[slide].classList.add("current_video")
+  slides[slide].classList.add("current_video");
+  textslide[slide].classList.add("current_text");
+
+  //text slide move next
   playCheckup(); // Call checkup function when current_video class is added
   
   let pointer = document.querySelector(".point");
@@ -40,9 +47,9 @@ function nextSl(){
       }
     });
   });
+  
 }
 startSl();
-
 
 
 /*********************************
@@ -61,7 +68,9 @@ function playCheckup() {
   video.load();
 
   /*********************************
+   
    * Play Pause Button fix: https://stackoverflow.com/questions/36803176/how-to-prevent-the-play-request-was-interrupted-by-a-call-to-pause-error
+  
   **********************************/
 
   // Initializing values
