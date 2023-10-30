@@ -28,25 +28,58 @@ function nextSl(){
   let pointer = document.querySelector(".point");
   pointer.dataset.current = slide; //change pointer data attribute value with slide
 }
-startSl();
-
-  //status pointer selector
-  let pointer = document.querySelector(".point");
-  const elStatus = Array.from(document.querySelectorAll('.status .stat'));
-
-  elStatus.forEach(stat => {
-      //on mouse click change pointer, slide & text
-      stat.addEventListener('click', () => {
-      //on mouse click change pointer
-      let vlg = stat.dataset.key; 
+var count = 0;
+function leftSl(){
+  count--;
+  if(count < 0) {
+      count = slides.length -1;
       slides[slide].classList.remove("current_video");
       textslide[slide].classList.remove("current_text");
-      slide = vlg;
-      slides[slide].classList.add("current_video");  
+    
+      slide = count; 
+      
+      slides[slide].classList.add("current_video");
       textslide[slide].classList.add("current_text");
-      pointer.dataset.current = slide; //change pointer data attribute value with slide
-    });
+      pointer.dataset.current = slide;
+      
+  } else {
+      slides[slide].classList.remove("current_video");
+      textslide[slide].classList.remove("current_text");
+    
+      slide = count; 
+      
+      slides[slide].classList.add("current_video");
+      textslide[slide].classList.add("current_text");
+      pointer.dataset.current = slide;
+  }
+}
+startSl();
+
+//Status Point Selector
+let pointer = document.querySelector(".point");
+const elStatus = Array.from(document.querySelectorAll('.status .stat'));
+elStatus.forEach(stat => {
+  //on mouse click change pointer, slide & text
+  stat.addEventListener('click', () => {
+    let vlg = stat.dataset.key; 
+    slides[slide].classList.remove("current_video");
+    textslide[slide].classList.remove("current_text");
+    slide = vlg;
+    slides[slide].classList.add("current_video");  
+    textslide[slide].classList.add("current_text");
+    pointer.dataset.current = slide; //change pointer data attribute value with slide
   });
+});
+
+//Next Right Navigation Buttons
+let aLeft = document.querySelector(".left-arrow");
+aLeft.addEventListener('click', () => {
+  leftSl();
+});
+let aRight = document.querySelector(".right-arrow");
+aRight.addEventListener('click', () => {
+  nextSl();
+});
   /*********************************
   Function for Player Controls.
   Added Play & Pause Button.
