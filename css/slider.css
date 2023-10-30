@@ -38,7 +38,7 @@ body {
     transform: translateY(0px);
     top:0px;
     height: 100vh;
-    opacity: unset !important;
+    opacity: 1;
     display: block !important;
 }
 /********* video_container DIV END **********/
