@@ -32,11 +32,12 @@ startSl();
 
   //status pointer selector
   let pointer = document.querySelector(".point");
-  //on mouse click change pointer
   const elStatus = Array.from(document.querySelectorAll('.status .stat'));
 
   elStatus.forEach(stat => {
-    stat.addEventListener('click', () => { 
+      //on mouse click change pointer, slide & text
+      stat.addEventListener('click', () => {
+      //on mouse click change pointer
       let vlg = stat.dataset.key; 
       slides[slide].classList.remove("current_video");
       textslide[slide].classList.remove("current_text");

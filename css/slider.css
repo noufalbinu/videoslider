@@ -24,15 +24,15 @@ body {
 	z-index: 2;
 	position: relative;
 	transition: all 0.5s;
-	transform: translateY(500px);
-	top: -500;
+	transform: translateY(-300px);
+	top: 0 !important;
 	width:100%;
 	height: -500px;
 	opacity: 0.9;
 }
 .current_video {
+    z-index: 183;
     position: absolute;
-    z-index: 5;
     color: #fff;
     width: 100%;
     transform: translateY(0px);
