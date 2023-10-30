@@ -1,11 +1,7 @@
 /*********************************
- 
 SLIDER  https://codepen.io/Dimboss/pen/mYGaqo : Inspired From
 
 *********************************/
-
-//status pointer selector
-  
 let slide=0, 
 slides = document.querySelectorAll('.cover-background > .video_container');
 textslide = document.querySelectorAll('.text > .slide_text');
@@ -22,7 +18,7 @@ function nextSl(){
   //video slide move next
   slides[slide].classList.remove("current_video");
   textslide[slide].classList.remove("current_text");
-  slide=(slide+1)%slides.length;
+  slide=(slide+1)%slides.length; //0+1=1 % 6
   slides[slide].classList.add("current_video");
   textslide[slide].classList.add("current_text");
 
@@ -31,37 +27,35 @@ function nextSl(){
   
   let pointer = document.querySelector(".point");
   pointer.dataset.current = slide; //change pointer data attribute value with slide
-
-  //on mouse click change pointer
-  const elStatus = Array.from(document.querySelectorAll('.status .stat'));
-  elStatus.forEach(stat => {
-    stat.addEventListener('click', () => {
-      let vlg = stat.dataset.key;
-      if(vlg == slide) {
-        console.log('same');
-      } else {
-        slides[slide].classList.remove("current_video");
-        slide=(slide+vlg)%slides.length;
-        slides[slide].classList.add("current_video");
-        pointer.dataset.current = slide; //change pointer data attribute value with slide
-      }
-    });
-  });
-  
 }
 startSl();
-/*********************************
 
-Function for Player Controls.
-Added Play & Pause Button.
-&
-Slider controls
-  
-**********************************/
-function playCheckup() {
-  video = document.querySelector(".current_video > .video");
-  video.autoplay = true;
-  video.load();
+  //status pointer selector
+  let pointer = document.querySelector(".point");
+  //on mouse click change pointer
+  const elStatus = Array.from(document.querySelectorAll('.status .stat'));
+
+  elStatus.forEach(stat => {
+    stat.addEventListener('click', () => { 
+      let vlg = stat.dataset.key; 
+      slides[slide].classList.remove("current_video");
+      textslide[slide].classList.remove("current_text");
+      slide = vlg;
+      slides[slide].classList.add("current_video");  
+      textslide[slide].classList.add("current_text");
+      pointer.dataset.current = slide; //change pointer data attribute value with slide
+    });
+  });
+  /*********************************
+  Function for Player Controls.
+  Added Play & Pause Button.
+          &
+  Slider controls
+  **********************************/   
+  function playCheckup() {
+    video = document.querySelector(".current_video > .video");
+    video.autoplay = true;
+    video.load();
 
   /*********************************
    
@@ -125,3 +119,7 @@ stopbutton.addEventListener("click", function () {
   } break;
 }
 });
+
+
+
+  

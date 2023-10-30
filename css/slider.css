@@ -22,7 +22,7 @@ body {
 
 .video_container {
 	z-index: 2;
-	position: realative;
+	position: relative;
 	transition: all 0.5s;
 	transform: translateY(500px);
 	top: -500;
@@ -98,12 +98,12 @@ body {
 .status .point {
     position: absolute;
     width: 18px;
-	height: 18px;
+    height: 18px;
     background-color: #ffffff;
     border-radius: 50%;
     transition: left 500ms ease-in-out;
     left: 16px;
-    z-index: 55555555555;
+    z-index: 5;
 }
 .exp{visibility: hidden;}
 
@@ -117,7 +117,7 @@ body {
    font-family: 'Montserrat', sans-serif !important;
    text-transform: uppercase;
 }
-.status .point[data-current='0'] {
+.status .point[data-key='0'] {
     top: 0px;
 }
 .status .point[data-current='1'] {
@@ -145,6 +145,9 @@ body {
     border-radius: 50%;
     margin: 34px 0px;
     border: none;
+    position: relative;
+    z-index: 555555555555;
+    cursor: pointer;
 }
 .stat[data-key='0'] {
     margin-top: 0 !important;
