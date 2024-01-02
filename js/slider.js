@@ -9,7 +9,7 @@ textslide = document.querySelectorAll('.text > .slide_text');
 let auto;
 function startSl(){
  stopSl();
- auto=setInterval(nextSl, 5000);
+ auto=setInterval(nextSl, 12000);
 }
 function stopSl(){
  clearInterval(auto);
@@ -28,6 +28,8 @@ function nextSl(){
   let pointer = document.querySelector(".point");
   pointer.dataset.current = slide; //change pointer data attribute value with slide
 }
+
+
 var count = 0;
 function leftSl(){
   count--;
@@ -53,6 +55,8 @@ function leftSl(){
       pointer.dataset.current = slide;
   }
 }
+
+
 startSl();
 
 //Status Point Selector
@@ -80,22 +84,42 @@ let aRight = document.querySelector(".right-arrow");
 aRight.addEventListener('click', () => {
   nextSl();
 });
+
+
+// Handling & Delay on Scroll
+let sTop = document.querySelector(".maze");
+let isScrolling = false;
+
+sTop.addEventListener('wheel', (e) => {
+  e.stopPropagation();
+
+  if (!isScrolling) {
+    isScrolling = true;
+    let delta = e.deltaY;
+    if (delta === -100) {
+      leftSl();
+    } else if (delta === 100) {
+      nextSl();
+    }
+    setTimeout(() => {
+      isScrolling = false;
+    }, 1000); // Set your desired delay time in milliseconds
+  }
+});
   /*********************************
   Function for Player Controls.
   Added Play & Pause Button.
           &
   Slider controls
   **********************************/   
-  function playCheckup() {
-    video = document.querySelector(".current_video > .video");
+function playCheckup() {
+  video = document.querySelector(".current_video > .video");
+  if (screenWidth < 800){
+    video.autoplay = false;
+  } else {
     video.autoplay = true;
     video.load();
-
-  /*********************************
-   
-   * Play Pause Button fix: https://stackoverflow.com/questions/36803176/how-to-prevent-the-play-request-was-interrupted-by-a-call-to-pause-error
-  
-  **********************************/
+  }
 
   // Initializing values
   var isPlaying = true;
@@ -156,4 +180,9 @@ stopbutton.addEventListener("click", function () {
 
 
 
-  
+
+
+
+
+
+
